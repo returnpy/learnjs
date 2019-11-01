@@ -134,6 +134,27 @@ console.log(wsc);
 
 原型继承
 
+```js
+function Person() {
+    this.name = 'zs';
+    this.age = 18;
+    this.sex = '男';
+}
+
+function Student() {
+    this.score = 100;
+}
+Student.prototype = new Person();
+Student.prototype.constructor = Student;
+var s1 = new Student()
+
+function Teacher() {
+    this.selary = 3000;
+}
+```
+
+
+
 原型继承无法设置构造函数的参数
 
 
