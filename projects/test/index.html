@@ -1,15 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Document</title>
-    </head>
-    <body>
-        <script>
-            // 学生管理系统
-
-        </script>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- IMPORT CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box {
+      margin: 20px auto;
+      width: 200px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border: 1px solid #ccc;
+      position: relative;
+      cursor: pointer;
+    }
+    .detail {
+      width: 400px;
+      height: 300px;
+      border: 1px solid #ccc;
+      position: absolute;
+      right: -1px;
+      top: 40px;
+    }
+    .hiden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" id="box">
+    <span>购物车</span>
+    <div class="detail" id="detail">
+      购物车详情
+    </div>
+  </div>
+  
+  <!-- IMPORT JS -->
+  <script>
+    let box = document.querySelector('#box');
+    let detail = document.querySelector('#detail');
+    let flag = false;
+    box.onclick = function () {
+      if (flag) {
+        detail.className = 'detail';
+        flag = false;
+      } else {
+        detail.className = 'hidden';
+        flag = true;
+      }
+    }
+  </script>
+</body>
 </html>

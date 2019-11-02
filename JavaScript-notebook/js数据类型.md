@@ -2,13 +2,33 @@
 
 ##  数据类型
 
-值类型
+### 值类型
 
-*Number* *String* *Boolean* undefined null
+*Number* *String* *Boolean* undefined null 空对象指针
 
-引用类型
+Number 包括常规数字和NaN  NaN不是一个数字，但它是数字类型的    NaN !== NaN 
+
+String 用单引号 双引号 反引号 包起来的都是字符串
+
+### 引用类型
 
 Object
+
+​	普通对象
+
+​	数组对象
+
+​	日期对象
+
+​	正则对象
+
+​	数学对象
+
+​	内置对象
+
+函数
+
+
 
 ## js中的数据类型
 
@@ -50,11 +70,37 @@ var result = 0.1 + 0.2;
 
 ### NaN
 
-不是一个数字
+not a number不是一个数字
 
 NaN与任何 值都不相等，包括它自己
 
-isNaN
+isNaN 检测一个值是否是有效数字
+
+isNaN 的机制，用isNaN进行检测的时候，如果发现值不是Number类型的，首先会转化成Number类型，然后再验证是否是有效数字
+
+## Number
+
+把其他类型转换为数字类型
+
+```js
+// 把val转换为数字的方法，用Number构造函数
+Number([val]) 
+'12.5'  		=> 12.5
+'12.5px'    => NaN
+''					=> 0
+true				=> 1
+false				=> 0
+isNaN(false) => false
+null				=> 0
+undefined		=> NaN
+// 引用数据类型转换为字符串，首先会调用它的toString方法转换为字符串，然后再转换为数字
+obj					=> NaN
+[ ]					=> 0
+[12]				=> 12
+[12, 11]  	=> NaN
+```
+
+
 
 ## String
 
@@ -71,6 +117,19 @@ console.log('Hello' + 123);  // 'Hello123' 如果+两边的数据类型不匹配
 ## Boolean
 
 true false表示真和假
+
+### 把其他类型转化为布尔类型
+
+```js
+// 只有五种情况会false
+0 '' null undefined NaN
+
+Boolean([val])
+! 取反，先转换为布尔再去烦 / !! 取反之后再取反，相当于没取反
+条件判断
+```
+
+
 
 ## Undefined和Null
 
@@ -129,9 +188,23 @@ var name = 'Asher';
 var isMale = true;
 console.log(age.toString());
 console.log(isMale.toString());
+
+// str.toString()
+NaN							=> 'NaN'
+true						=> 'true'
+null						=> TypeError
+undefined				=> TypeError
+obj							=> '[Object Object]'   Object.prototype.toString方法不是转换为字符串，
+																			 而是用来检测数据类型的
+// 字符串拼接
+只有加法可能存在字符串拼接
+'10' + 10       => '1010'
+'10' - 10				=> 0
+'10s' - 10			=> NaN
+
 ```
 
-把其他类型转换为数值类型
+把其他类型转换为数字类型
 
 ```js
 // Number()
@@ -245,6 +318,14 @@ num += 5;  // 相当于 num = num + 5;
 
 ## 数据在内存中的存储方式
 
+浏览器想要执行js代码
+
+1从电脑内存中分配一块内存，用来执行代码内存分 堆区 栈区 代码区 公共区
+
+2分配一个主线程自上而下的执行代码
+
+代码存储在内存中的代码区中
+
 值类型存储在内存中的栈中
 
 引用类型存储在内存中的堆中
@@ -254,7 +335,7 @@ num += 5;  // 相当于 num = num + 5;
 ```js
 // 在内存中的栈中创建一个10，让变量n1指向这里的10
 var n1 = 10;
-// 在内存中复制一份n1的值，让n2指向赋值的值
+// 在内存中复制一份n1的值，让n2指向复制的值
 var n2 = n1;
 ```
 

@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+#tabBox {
+  box-sizing: border-box;
+  width: 500px;
+  margin: 20px auto;
+  position: relative;
+}
+#navBox {
+  display: flex;
+  position: relative;
+  top: 1px;
+}
+#navBox li {
+  box-sizing: border-box;
+  margin-right: 10px;
+  padding: 0 10px;
+  line-height: 35px;
+  border: 1px solid #ccc;
+}
+#navBox li.active {
+  border-bottom-color: #fff;
+}
+#tabBox>div {
+  z-index: -1;
+  box-sizing: border-box;
+  padding: 10px;
+  height: 150px;
+  width: 500px;
+  border: 1px solid #ccc;
+  position: absolute;
+  display: none;
+}
+#tabBox>div.active {
+  display: block;
+}

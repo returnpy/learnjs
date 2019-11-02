@@ -1,14 +1,8 @@
 # 对象
 
-js中万物皆对象
-
-面向对象编程就是让谁做什么
-
-谁就是一个对象
-
-干啥就是方法
-
 程序中的对象是对现实世界中的抽象
+
+任何一个对象都是由0到多组键值对组成的，key不能重复
 
 ```js
 // 创建对象
@@ -88,7 +82,7 @@ hero.attack();
 // Object 是构造函数
 // new 的作用是会在内存中创建一个对象
 var hero = new Object();
-// 打印一个不存在的属性会输出undefined
+// 打印一个不存在的属性默认值是undefined
 console.log(hero.name);
 hero.name = '敌法师';
 hero.weapon = '弯刀';

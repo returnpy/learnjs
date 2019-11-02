@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- IMPORT CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    #newsBox {
+      box-sizing: border-box;
+      padding: 20px;
+      width: 300px;
+      border: 2px solid #ccc;
+      margin: 20px auto;
+    }
+
+    #newsBox li {
+      line-height: 35px;
+      border-bottom: 1px dashed #ccc;
+    }
+
+    #newsBox li:nth-last-child(1) {
+      line-height: 35px;
+      border-bottom: 0px dashed #ccc;
+    }
+
+    /* #newsBox li:nth-child(odd) {
+      background-color: #ddd;
+    }
+    #newsBox li:hover {
+      background-color: #aaa;
+    } */
+  </style>
+</head>
+
+<body>
+  <ul id="newsBox">
+    <li>我是第1条新闻</li>
+    <li>我是第2条新闻</li>
+    <li>我是第3条新闻</li>
+    <li>我是第4条新闻</li>
+    <li>我是第5条新闻</li>
+  </ul>
+
+  <!-- IMPORT JS -->
+  <script>
+    let lis = document.querySelectorAll('li');
+    for (let i = 0; i < lis.length; i++) {
+      lis[i].style.backgroundColor = !(i % 2) ? '#ccc' : null;
+      lis[i].onmouseover = function () {
+        this.old = this.style.backgroundColor;
+        this.style.backgroundColor = '#aaa';
+      }
+      lis[i].onmouseout = function () {
+        this.style.backgroundColor = this.old;
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- IMPORT CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box {
+      margin: 20px auto;
+      box-sizing: border-box;
+      width: 200px;
+      text-align: center;
+      line-height: 40px;
+      height: 40px;
+      border: 1px solid red;
+      position: relative;
+    }
+    .box:hover {
+      border-bottom: 1px solid #fff;
+    }
+    .box:hover .detail {
+      display: block;
+    }
+    .detail {
+      z-index: -1;
+      display: none;
+      width: 300px;
+      height: 100px;
+      border: 1px solid red;
+      position: absolute;
+      right: -1px;
+      top: 38px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span>购物车</span>
+    <div class="detail">
+      购物车的相关信息
+    </div>
+  </div>
+</body>
+</html>
