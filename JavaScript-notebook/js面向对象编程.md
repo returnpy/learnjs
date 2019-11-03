@@ -153,11 +153,82 @@ function Teacher() {
 }
 ```
 
-
-
 原型继承无法设置构造函数的参数
 
+## 改变函数this指向的函数
 
+```js
+// bind() 改变函数的this，并返回一个新的函数
+function fn (x, y) {
+    console.log(this);  // this指向，谁调用的函数this就是谁
+    console.log(x + y);
+};
+
+var o = {
+    name: '张三'
+};
+
+var f = fn.bind(o, 5, 6);
+f();
+/----------------------------------------------------------------------------------------
+// call() 改变函数的this指向，直接调用函数
+function fn(x, y) {
+    console.log(this);
+    console.log(x + y);
+}
+
+var o = {
+    name: '张三'
+}
+
+fn.call(o, 2, 5);
+```
+
+### 借用构造函数实现继承可以实现属性继承，但是不能实现方法继承
+
+
+```js
+// 借用构造函数实现继承
+function Person(name, age, sex) {
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+}
+// 子类型
+function Student(name, age, sex, score) {
+    Person.call(this, name, age, sex);
+    this.score = score;
+}
+
+var s1 = new Student('张飞', 18, '男', 89);
+console.log(s1);
+```
+
+## 组合继承
+
+```js
+function Person(name, age, sex) {
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+}
+
+Person.prototype.sayHi = function () {
+    console.log('大家好! 我是: ' + this.name);
+} 
+
+function Student(name, age, sex, score) {
+    // 借用构造函数
+    Person.call(this, name, age, sex);
+    this.score = score;
+}
+
+Student.prototype = new Person();
+Student.prototype.constructor = Student;
+
+var s1 = new Student('张三', 18, '男', 101);
+console.log(s1);
+```
 
 
 
